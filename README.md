@@ -45,12 +45,9 @@ Missing data (songs and artists of songplays) is allowed (defined a None) but sh
 
 ## Files
 
-- data: folder with JSON data
 - sql_queries.py: data model definition
 - create_table.py: (re)create sparkify DB and data model
 - etl.py: runs the pipeline
-- etl.ipynb: used during the implementation of the pipeling to build/verify steps
-- test.ipynb: used during the implementation of the pipeling to insect data
 
 ## Run projects
 - Run create_table.py (will create the data tables)
@@ -59,7 +56,7 @@ Missing data (songs and artists of songplays) is allowed (defined a None) but sh
 
 ## Sample Queries
 
-Find below (available also in test.ipynb) the analytic queries which Sparkify team can run to collect meaningful insights on the user behaviour: 
+Find below (available also in Workspace test.ipynb) the analytic queries which Sparkify team can run to collect meaningful insights on the user behaviour: 
 
 ### Busiest Months
 SELECT year,month, count(*) FROM time group by year, month order by year, month limit 10;
