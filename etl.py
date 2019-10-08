@@ -6,8 +6,18 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
-    """Process and insert SONG data"""
-    
+    """
+    Description: This function reads the file in the filepath (data/song_data)
+    to get song/artist data and populate the database tables
+
+    Arguments:
+        cur: the cursor object.
+        filepath: song data file path.
+
+    Returns:
+        None
+    """
+
     print("Process SONG data") 
      
     # open song file
@@ -22,6 +32,18 @@ def process_song_file(cur, filepath):
     cur.execute(song_table_insert, song_data)
 
 def process_log_file(cur, filepath):
+    """
+    Description: This function reads the file in the filepath (data/log_data)
+    to get user/time data and populate the database tables
+
+    Arguments:
+        cur: the cursor object.
+        filepath: log data file path.
+
+    Returns:
+        None
+    """
+
     """Process and insert LOG data"""
     
     print("Process LOG data") 
@@ -70,7 +92,20 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
-    """Process data from filepath"""
+    """
+    Description: Generic method to perform a call to the
+    methods implementing the logic
+
+    Arguments:
+        cur: the cursor object.
+        conn: the connection object.
+        filepath: file path.
+        func: method performing the logic.
+
+    Returns:
+        None
+"""
+
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
