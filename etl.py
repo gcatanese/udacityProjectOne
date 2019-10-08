@@ -7,6 +7,9 @@ from sql_queries import *
 
 def process_song_file(cur, filepath):
     """Process and insert SONG data"""
+    
+    print("Process SONG data") 
+     
     # open song file
     df = pd.read_json(filepath, typ='series')
 
@@ -20,6 +23,9 @@ def process_song_file(cur, filepath):
 
 def process_log_file(cur, filepath):
     """Process and insert LOG data"""
+    
+    print("Process LOG data") 
+    
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -85,12 +91,16 @@ def process_data(cur, conn, filepath, func):
 
 def main():
     """Main: runs the pipeline"""
+    
+    print("Main starts...")
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
     process_data(cur, conn, filepath='data/song_data', func=process_song_file)
     process_data(cur, conn, filepath='data/log_data', func=process_log_file)
-
+    
+    print("Pipeline is completed") 
+   
     conn.close()
 
 
