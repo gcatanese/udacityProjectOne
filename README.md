@@ -49,9 +49,34 @@ Missing data (songs and artists of songplays) is allowed (defined a None) but sh
 - create_table.py: (re)create sparkify DB and data model
 - etl.py: runs the pipeline
 
-## Run projects
-- Run create_table.py (will create the data tables)
-- Run etl.py (will run the pipeline storing the data in the Postgres DB)
+## Run project
+
+### Prerequisites
+
+1. Postgres must run on localhost, default port
+2. create STUDENT role:
+"CREATE ROLE student WITH
+  LOGIN
+  SUPERUSER
+  INHERIT
+  CREATEDB
+  CREATEROLE
+  NOREPLICATION;
+"
+3. Create STUDENTDB database
+CREATE DATABASE studentdb
+    WITH 
+    OWNER = student
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'en_US.utf8'
+    LC_CTYPE = 'en_US.utf8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+  
+### Execution  
+
+1. python create_table.py
+2. python etl.py
 
 
 ## Sample Queries
