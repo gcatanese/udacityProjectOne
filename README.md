@@ -1,18 +1,4 @@
-Discuss the purpose of this database in the context of the startup, Sparkify, and their analytical goals.
-State and justify your database schema design and ETL pipeline.
-[Optional] Provide example queries and results for song play analysis.
-
-Insert data using the COPY command to bulk insert log files instead of using INSERT on one row at a time
-Add data quality checks
-Create a dashboard for analytic queries on your new database
-
-The README file includes a summary of the project, how to run the Python scripts, and an explanation of the files in the repository. Comments are used effectively and each function has a docstring.
-
-https://www.python.org/dev/peps/pep-0008/
-
-
 # Project: Data Modeling with Postgres
-
 
 ## Intro
 
@@ -51,19 +37,21 @@ Missing data (songs and artists of songplays) is allowed (defined a None) but sh
 
 ## Run project
 
-### Prerequisites
+### Pre-requisites
 
 1. Postgres must run on localhost, default port
 2. create STUDENT role:
-"CREATE ROLE student WITH
+```
+CREATE ROLE student WITH
   LOGIN
   SUPERUSER
   INHERIT
   CREATEDB
   CREATEROLE
   NOREPLICATION;
-"
+```
 3. Create STUDENTDB database
+```
 CREATE DATABASE studentdb
     WITH 
     OWNER = student
@@ -72,6 +60,7 @@ CREATE DATABASE studentdb
     LC_CTYPE = 'en_US.utf8'
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
+```
   
 ### Execution  
 
@@ -81,15 +70,15 @@ CREATE DATABASE studentdb
 
 ## Sample Queries
 
-Find below (available also in Workspace test.ipynb) the analytic queries which Sparkify team can run to collect meaningful insights on the user behaviour: 
+Find below (available also in Workspace test.ipynb) the analytic queries which Sparkify team can run to collect meaningful insights on the user behaviour.
+
+**Note**: the multi-line separator is not rendered when viewing README.md (view source instead)  
 
 ### Busiest Months
 SELECT year,month, count(*) FROM time group by year, month order by year, month limit 10;
 
 ### Distribution per day
 SELECT weekday, count(*) FROM time group by weekday order by weekday;
-
-### Distribution weekday VS weekend
 
 ### Distribution weekday VS weekend
 select 'weekday' as when, sum(total) from (SELECT weekday, count(*) as total FROM time group by weekday order by weekday) as t where weekday in (0,1,2,3,4) \
